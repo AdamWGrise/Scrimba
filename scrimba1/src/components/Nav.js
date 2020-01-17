@@ -3,7 +3,7 @@ import '../App.css'
 
 function Nav() {
     return (
-        <div className="Nav">nnnnnnnnnnnnnn aaaaaaaaaaaaaaaa vvvvvvvvvvvvvvvv bbbbbbbbbbb aaaaaaaa rrrrrrrrrr</div>
+        <div className="Nav">Navvy</div>
     )
 }
 

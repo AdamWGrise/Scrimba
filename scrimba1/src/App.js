@@ -6,7 +6,7 @@ import AwesomeHeader from './components/Header'
 
 function App() {
   return (
-    <div className="App">
+    <div>
         <AwesomeHeader />
         <MyInfo />
         <AwesomeFooter />
