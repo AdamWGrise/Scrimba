@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import GameItem from './GameItem';
 
 function MyInfo() {
     const firstName = 'Adam'
@@ -31,13 +32,18 @@ function MyInfo() {
         <h1 style={{fontSize: '3rem'}}>Good {timeOfDay}.</h1>
         <h2>I'm {firstName + ' ' + lastName}.</h2>
         <p>I like playing games. Here are a few:</p>
-        <ul>
-            <li><input type="checkbox" /> Hollow Knight</li>
-            <li><input type="checkbox" /> Dark Souls</li>
+        <ul className="game-list">
+            <GameItem />
+            <GameItem />
+            <GameItem />
+            <GameItem />
+            <GameItem />
+            <GameItem />
+            {/* <li><input type="checkbox" /> Dark Souls</li>
             <li><input type="checkbox" /> Cadence of Hyrule</li>
             <li><input type="checkbox" /> Overcooked 2</li>
             <li><input type="checkbox" /> Breath of the Wild</li>
-            <li><input type="checkbox" /> Half-Life: Alyx</li>
+            <li><input type="checkbox" /> Half-Life: Alyx</li> */}
         </ul>
     </div>
   );
