@@ -1,9 +1,9 @@
 import React from 'react';
 import '../App.css';
 
-function GameItem() {
+function GameItem(props) {
     return(
-        <li className='game-item'><input type="checkbox" /> TEXT</li>
+        <li className='game-item'><input type="checkbox" /> {props.title}</li>
     )
 }
 
