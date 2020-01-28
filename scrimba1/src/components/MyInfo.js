@@ -5,6 +5,8 @@ import ContactCard from './ContactCard'
 import Joke from './Joke'
 import './jokesData'
 import jokesData from './jokesData';
+import gameData from './gameData';
+import GameCard from './GameCard';
 
 function MyInfo() {
     const firstName = 'Adam'
@@ -32,8 +34,16 @@ function MyInfo() {
     }
 
     const jokeComponents = jokesData.map((joke) => {
+        console.log(joke)
         return (
             <Joke key={joke.id} question={joke.question} answer={joke.answer} />
+        )
+    })
+
+    const gameComponents = gameData.map((game) => {
+        console.log(game)
+        return (
+            <GameCard key={game.id} title={game.title} system={game.system} price={game.price} art={game.art} />
         )
     })
 
@@ -50,6 +60,8 @@ function MyInfo() {
             <GameItem title="Half-Life: Alyx"/>
             <GameItem title="Oddworld: Abe's Oddysey"/>
         </ul>
+        <h3>Game List v2</h3>
+            {gameComponents}
         <h3>Potterverse Contact Cards</h3>
         <ContactCard
             contact={{

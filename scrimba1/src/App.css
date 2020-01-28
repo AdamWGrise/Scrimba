@@ -20,6 +20,24 @@ hr {
     text-align: center;
 }
 
+.game-card {
+    display: inline-block;
+    text-align: center;
+    width: 270px;
+    border: 2px solid rgba(75,75,75,0.5);
+    border-radius: 6px;
+    margin: 5px;
+    padding: 6px;
+    background: rgba(50,50,50,0.5);
+    vertical-align: top;
+}
+
+.game-card-img {
+    width: 250px;
+    height: auto;
+    margin-bottom: 10px
+}
+
 .joke {
     height: auto;
     width: 200px;
@@ -34,7 +52,7 @@ hr {
 
 .card-img {
     height:200px;
-    width:auto;
+    width: auto;
     margin-bottom: 10px;
 }
 
