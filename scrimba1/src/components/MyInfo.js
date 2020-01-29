@@ -21,7 +21,7 @@ function MyInfo() {
 
     if (hours < 12) {
         timeOfDay = 'morning'
-        styles.color = '#5A6384'
+        styles.color = '#3A3354'
         styles.backgroundColor = '#E59A83'
     } else if (hours >= 12 && hours < 17) {
         timeOfDay = 'afternoon'

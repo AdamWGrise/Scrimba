@@ -4,7 +4,7 @@ import '../App.css'
 function ContactCard(props) {
     console.log(props.contact)
     return(
-        <div className="contact-card">
+        <div className="contact-card card">
             <img className="card-img" src={props.contact.imgUrl} alt=""/>
             <h3>{props.contact.name}</h3>
             <p>Marital status: {props.contact.maritalStatus}</p>
