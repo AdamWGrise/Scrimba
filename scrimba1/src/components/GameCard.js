@@ -31,15 +31,31 @@ class GameCard extends React.Component {
 
     render(props) {
         const style = this.yourMethodHere();
+        
+        let mouseOver = function() {
+            console.log("Hey, something got moused over!")
+        }
+
+        let pluralPlatforms
+        if (this.props.system.length > 1) {
+            pluralPlatforms = "(s)"
+        }
+
         // Put any styling stuff here, conditional rendering, etc.
         return(
-            <div className="game-card card">
+            <div className="game-card card" onClick={() => {console.log("I was clicked.")}}>
                 <a href={this.props.shopLink}>
-                    <img className="game-card-img" src={this.props.art} alt=""/>
+                    <img className="game-card-img" src={this.props.art} alt="" onMouseOver={mouseOver}/>
                 </a>
                 <h3>{this.props.title}</h3>
                 <p>Price: {this.props.price.toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
-                <p>Platform(s): {this.props.system.join(', ')}</p>
+                <p>Platform{pluralPlatforms}: {this.props.system.join(', ')}</p>
+                <input
+                    type="checkbox"
+                    onChange={function() {console.log("Changed.")}}
+                    checked={this.props.owned}
+                />
+                <span> Own it!</span>
             </div>
         )
     }
