@@ -23,7 +23,11 @@ class GameCard extends React.Component {
 
     yourMethodHere() {
         // Build a method here
-    }
+    };
+
+    constructor() {
+        super()
+    };
 
     render(props) {
         const style = this.yourMethodHere();

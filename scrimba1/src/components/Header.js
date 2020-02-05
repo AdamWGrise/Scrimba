@@ -2,10 +2,10 @@ import React from 'react';
 import Nav from './Nav'
 import '../App.css';
 
-function AwesomeHeader() {
+function AwesomeHeader(props) {
   return (
     <div className="Header">
-        <Nav />
+        <Nav headerLabel={props.headerLabel}/>
     </div>
   );
 }

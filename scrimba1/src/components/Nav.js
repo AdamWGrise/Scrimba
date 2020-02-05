@@ -1,9 +1,9 @@
 import React from 'react'
 import '../App.css'
 
-function Nav() {
+function Nav(props) {
     return (
-        <div className="Nav">Navvy</div>
+        <div className="Nav">{props.headerLabel}</div>
     )
 }
 
