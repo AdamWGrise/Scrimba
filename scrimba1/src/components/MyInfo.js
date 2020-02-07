@@ -20,7 +20,6 @@ class MyInfo extends React.Component {
     }
 
     handleClick() {
-        // this.setState({ count: 1 })
         this.setState(prevState => {
             return {
                 count: prevState.count + Math.ceil(Math.random()*100)
@@ -51,8 +50,10 @@ class MyInfo extends React.Component {
         <div className="MyInfo">
             <Title />
             <h2>I'm {firstName + ' ' + lastName}.</h2>
-            <p>{this.state.count}</p>
-            <button onClick={this.handleClick}>Click me to satisfy</button>
+            <p>
+                <button onClick={this.handleClick}>Click me to satisfy</button> ...
+                {this.state.count}
+            </p>
             <hr />
             <h3>I like playing games. Here are a few:</h3>
             {/* <ul className="game-list">
