@@ -25,15 +25,15 @@ class GameCard extends React.Component {
         // Build a method here
     };
 
-    constructor() {
-        super()
-    };
+    // constructor() {
+    //     super()
+    // };
 
     render(props) {
-        const style = this.yourMethodHere();
+        // const style = this.yourMethodHere();
         
         let mouseOver = function() {
-            console.log("Hey, something got moused over!")
+            console.log("Pointed!")
         }
 
         let pluralPlatforms
@@ -43,8 +43,8 @@ class GameCard extends React.Component {
 
         // Put any styling stuff here, conditional rendering, etc.
         return(
-            <div className="game-card card" onClick={() => {console.log("I was clicked.")}}>
-                <a href={this.props.shopLink}>
+            <div className="game-card card" onClick={() => {console.log(this.props.title)}}>
+                <a href={this.props.shopLink} target="_blank" rel="noopener noreferrer">
                     <img className="game-card-img" src={this.props.art} alt="" onMouseOver={mouseOver}/>
                 </a>
                 <h3>{this.props.title}</h3>

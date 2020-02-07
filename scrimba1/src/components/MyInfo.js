@@ -33,16 +33,16 @@ class MyInfo extends React.Component {
         const lastName = 'Grise'
         
         const jokeComponents = jokesData.map((joke) => {
-            console.log(joke)
+            // console.log(joke)
             return (
                 <Joke key={joke.id} question={joke.question} answer={joke.answer} />
             )
         })
 
         const gameComponents = this.state.games.map((game) => {
-            console.log(game)
+            // console.log(game)
             return (
-                <GameCard key={game.id} title={game.title} system={game.system} price={game.price} art={game.art} />
+                <GameCard key={game.id} title={game.title} system={game.system} price={game.price} art={game.art} owned={game.owned} shopLink={game.shopLink}/>
             )
         })
 
