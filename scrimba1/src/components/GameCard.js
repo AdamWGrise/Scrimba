@@ -52,7 +52,7 @@ class GameCard extends React.Component {
                 <p>Platform{pluralPlatforms}: {this.props.system.join(', ')}</p>
                 <input
                     type="checkbox"
-                    onChange={function() {console.log("Changed.")}}
+                    onChange={() => this.props.handleOwnItChange(this.props.id)}
                     checked={this.props.owned}
                 />
                 <span> Own it!</span>

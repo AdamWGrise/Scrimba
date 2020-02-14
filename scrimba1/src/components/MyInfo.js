@@ -17,12 +17,35 @@ class MyInfo extends React.Component {
             count: 0
         }
         this.handleClick = this.handleClick.bind(this)
+        this.handleOwnItChange = this.handleOwnItChange.bind(this)
     }
 
     handleClick() {
         this.setState(prevState => {
+            console.log(prevState.count)
             return {
                 count: prevState.count + Math.ceil(Math.random()*100)
+            }
+        })
+    }
+
+    handleOwnItChange(id) {
+        console.log("Changed ", id)
+        this.setState(prevState => {
+            const updatedGames = prevState.games.map(game => {
+                if (game.id === id) {
+                    return {
+                        ...game,
+                        owned: !game.owned
+                    }
+                }
+                return game
+            })
+            // Demonstrates that State hasn't been modified directly, but a new state has been returned.
+            // console.log(prevState.games)
+            // console.log(updatedGames)
+            return {
+                games: updatedGames
             }
         })
     }
@@ -39,12 +62,8 @@ class MyInfo extends React.Component {
             )
         })
 
-        const gameComponents = this.state.games.map((game) => {
-            // console.log(game)
-            return (
-                <GameCard key={game.id} title={game.title} system={game.system} price={game.price} art={game.art} owned={game.owned} shopLink={game.shopLink}/>
-            )
-        })
+        const gameComponents = this.state.games.map(game => 
+            <GameCard key={game.id} id={game.id} title={game.title} system={game.system} price={game.price} art={game.art} owned={game.owned} shopLink={game.shopLink} handleOwnItChange={this.handleOwnItChange}/>)
 
         return (
         <div className="MyInfo">
