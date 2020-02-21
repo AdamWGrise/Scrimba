@@ -8,13 +8,16 @@ import jokesData from './jokesData';
 import gameData from './gameData';
 import GameCard from './GameCard';
 import Title from './Title';
+import Conditional from './Conditional';
 
 class MyInfo extends React.Component {
     constructor() {
         super()
         this.state = {
             games: gameData,
-            count: 0
+            count: 0,
+            color: 'rgba(255, 255, 255, 1.0)',
+            isLoading: true,
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleOwnItChange = this.handleOwnItChange.bind(this)
@@ -50,6 +53,31 @@ class MyInfo extends React.Component {
         })
     }
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                isLoading: false
+            })
+        }, 1500)
+        console.log("Mounted!")
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.count !== this.state.count) {
+            console.log("componentDidUpdate triggered.")
+            const newColor = 'rgba(' + this.randomColor() + ')'
+            this.setState({color: newColor})
+        }
+    }
+
+    randomColor() {
+        let r = Math.floor((Math.random())*256)
+        let g = Math.floor((Math.random())*256)
+        let b = Math.floor((Math.random())*256)
+        let a = Math.floor((Math.random()*0.5+0.5)*100)/100
+        return(r+', '+g+', '+b+', '+a);
+    }
+
     render() {
 
         const firstName = 'Adam'
@@ -68,7 +96,7 @@ class MyInfo extends React.Component {
         return (
         <div className="MyInfo">
             <Title />
-            <h2>I'm {firstName + ' ' + lastName}.</h2>
+            <h2 style={{color: this.state.color}}>I'm {firstName + ' ' + lastName}. This color is {this.state.color}.</h2>
             <p>
                 <button onClick={this.handleClick}>Click me to satisfy</button> ...
                 {this.state.count}
@@ -85,6 +113,15 @@ class MyInfo extends React.Component {
             </ul>
             <h3>Game List v2</h3> */}
                 {gameComponents}
+            <hr />
+            {/* Ternary: 
+            condition ? statementIfTrue : statementIfFalse */}
+            {this.state.isLoading ?
+            <h3>...Loading...</h3> :
+            <Conditional isLoading={this.state.isLoading}/>}
+            {/* Conditionals can also be abbreviated with a simple AND statement */}
+            {this.state.color.indexOf('77') > -1 && <h1>Jackpot! Lucky 7s!</h1>}
+            {}
             <hr />
             <h3>Potterverse Contact Cards</h3>
             <ContactCard
