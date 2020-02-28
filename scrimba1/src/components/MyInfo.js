@@ -18,9 +18,25 @@ class MyInfo extends React.Component {
             count: 0,
             color: 'rgba(255, 255, 255, 1.0)',
             isLoading: true,
+            loadingSwapi: false,
+            swCharacter: {},
+            firstName: "",
+            lastName: "",
+            isFriendly: true,
+            gender: ""
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleOwnItChange = this.handleOwnItChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        const {name, value, type, checked} = event.target
+
+        type === "checkbox" ? this.setState({[name]: checked}) : this.setState({
+            [name]: value,
+        })
+
     }
 
     handleClick() {
@@ -54,11 +70,22 @@ class MyInfo extends React.Component {
     }
 
     componentDidMount() {
+        this.setState({
+            loadingSwapi: true
+        })
+        fetch("https://swapi.co/api/people/1")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    swCharacter: data,
+                    loadingSwapi: false
+                })
+            })        
         setTimeout(() => {
             this.setState({
                 isLoading: false
             })
-        }, 1500)
+        }, 3000)
         console.log("Mounted!")
     }
 
@@ -121,7 +148,62 @@ class MyInfo extends React.Component {
             <Conditional isLoading={this.state.isLoading}/>}
             {/* Conditionals can also be abbreviated with a simple AND statement */}
             {this.state.color.indexOf('77') > -1 && <h1>Jackpot! Lucky 7s!</h1>}
+            <br/>Test API call to SWAPI: {this.state.loadingSwapi ? "...loading..." : this.state.swCharacter.name}
             {}
+            <hr />
+            <h3>Form Testing</h3>
+            <form>
+                <input
+                    type="text"
+                    value={this.state.firstName}
+                    name="firstName"
+                    placeholder="First Name"
+                    onChange={this.handleChange} /> &nbsp;
+                <input
+                    type="text"
+                    value={this.state.lastName}
+                    name="lastName"
+                    placeholder="Last Name"
+                    onChange={this.handleChange} />
+                <span style={{fontSize:"2rem", color: this.state.color}}>
+                    {this.state.firstName}&nbsp;{this.state.lastName}
+                </span>
+                <br/>
+                <textarea
+                    onChange={this.handleChange}
+                    value={"Checkbox loading the SWAPI..."}
+                    />
+                <br/>
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={this.state.isFriendly}
+                        onChange={this.handleChange}
+                        name="isFriendly"
+                    /> Is friendly?
+                </label>
+                <br />
+                <h4>You are a {this.state.gender}.</h4>
+                <label>
+                    <input
+                        type="radio"
+                        checked={this.state.gender === "female"}
+                        onChange={this.handleChange}
+                        name="gender"
+                        value="female"
+                    /> Female
+                </label>
+                <br />
+                <label>
+                    <input
+                        type="radio"
+                        checked={this.state.gender === "male"}
+                        onChange={this.handleChange}
+                        name="gender"
+                        value="male"
+                    /> Male
+                </label>
+            </form>
             <hr />
             <h3>Potterverse Contact Cards</h3>
             <ContactCard
