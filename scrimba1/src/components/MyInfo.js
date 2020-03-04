@@ -23,7 +23,8 @@ class MyInfo extends React.Component {
             firstName: "",
             lastName: "",
             isFriendly: true,
-            gender: ""
+            gender: "female",
+            favColor: "green",
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleOwnItChange = this.handleOwnItChange.bind(this)
@@ -152,7 +153,7 @@ class MyInfo extends React.Component {
             {}
             <hr />
             <h3>Form Testing</h3>
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <input
                     type="text"
                     value={this.state.firstName}
@@ -203,6 +204,23 @@ class MyInfo extends React.Component {
                         value="male"
                     /> Male
                 </label>
+                <br />
+                <label>Favorite Color:</label>
+                <select
+                    value={this.state.favColor}
+                    onChange={this.handleChange}
+                    name="favColor"
+                    >
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                </select>
+                <h3>You've selected {<span style={{color:this.state.favColor}}>{this.state.favColor}</span>} as your favorite color!</h3>
+                <button>Submit</button>
+                {/* HTML5 buttons in a form are auto-submit */}
             </form>
             <hr />
             <h3>Potterverse Contact Cards</h3>
