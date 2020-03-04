@@ -186,6 +186,7 @@ class MyInfo extends React.Component {
                 <br />
                 <h4>You are a {this.state.gender}.</h4>
                 <label>
+                    {/* Putting the whole radio input in a label lets the user click the text to select the radio button as well. */}
                     <input
                         type="radio"
                         checked={this.state.gender === "female"}
