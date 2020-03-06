@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import MyInfo from './components/MyInfo'
+import MyInfoContainer from './components/MyInfoContainer'
 import AwesomeFooter from './components/Footer'
 import AwesomeHeader from './components/Header'
 
@@ -17,7 +17,7 @@ class App extends React.Component {
         return (
             <div>
                 <AwesomeHeader headerLabel={this.state.headerLabel}/>
-                <MyInfo />
+                <MyInfoContainer />
                 <AwesomeFooter />
                 {this.state.testValue}
             </div>
